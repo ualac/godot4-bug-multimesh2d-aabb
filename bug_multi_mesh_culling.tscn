@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://noif2psm5ls2"]
+
+[ext_resource type="Script" path="res://bug_multi_mesh_culling.gd" id="1_u5dqx"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qpwkw"]
+size = Vector2(50, 50)
+orientation = 2
+
+[sub_resource type="MultiMesh" id="MultiMesh_qm3vp"]
+instance_count = 3
+mesh = SubResource("PlaneMesh_qpwkw")
+buffer = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="BugMultiMeshCulling" type="Node2D"]
+script = ExtResource("1_u5dqx")
+
+[node name="MultiMeshInstance2d" type="MultiMeshInstance2D" parent="."]
+modulate = Color(0.772549, 0.12549, 0.552941, 1)
+multimesh = SubResource("MultiMesh_qm3vp")
+
+[node name="Camera2d" type="Camera2D" parent="."]
+current = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2d"]
+offset_left = -559.0
+offset_top = -308.0
+offset_right = -204.0
+offset_bottom = -212.0
+text = "[Click-drag]   Pan Camera
+[Space]   Randomise Instances
+[A]  Recalculate AABB
+[R]  Reset"
